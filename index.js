@@ -12,10 +12,20 @@ class cell {
 }
 
 // global variables
+var can_reset
 var grid_size, cell_size
 var canvas, context
 var grid, snake, food
 var snake_dir
+var score
+
+function collition_with_snake ( pos ) {
+	var elem = snake.find ( function (element) {
+		return (element.x == pos.x && element.y == pos.y)
+	} )
+	if ( elem == undefined ) return new Boolean(false)
+	else return new Boolean(true)
+}
 
 function move_snake () {
 	snake = snake.slice ( 1 )
@@ -28,7 +38,9 @@ function move_snake () {
 	if ( next.x >= grid_size.x ) next.x = parseInt ( 0 )
 	if ( next.y < 0 ) next.y = parseInt ( grid_size.y - 1 )
 	if ( next.y >= grid_size.y ) next.y = parseInt ( 0 )
+	var ret = collition_with_snake ( next )
 	snake.push ( next )
+	return ret
 }
 
 function draw_grid () {
@@ -42,6 +54,7 @@ function draw_grid () {
 
 function draw_snake () {
 	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.fillStyle = "Blue"
 	for ( let i = 0 ; i < snake.length ; ++i ) {
 		var cp = snake[i]
 		context.fillRect ( grid[cp.x][cp.y].pos.x, grid[cp.x][cp.y].pos.y,
@@ -50,8 +63,15 @@ function draw_snake () {
 }
 
 function draw_food () {
+	context.fillStyle = "Red"
 	context.fillRect ( grid[food.x][food.y].pos.x, grid[food.x][food.y].pos.y,
 		cell_size.x, cell_size.y )
+}
+
+function draw_score () {
+	context.fillStyle = "Green"
+	context.font = "30px Arial";
+	context.fillText( parseInt(score).toString(), 10, 30);
 }
 
 function populate_grid () {
@@ -109,6 +129,17 @@ function key_pressed ( event ) {
 				snake_dir = new vec2 ( parseInt(1), parseInt(0) )
 			}
 			break;
+		case 82:
+			if ( can_reset == Boolean ( true ) ) {
+				can_reset = new Boolean ( false )
+				score = parseInt ( 0 )
+				resize_function ()
+				populate_grid ()
+				populate_snake ()
+				populate_snake ()
+				window.requestAnimationFrame ( next_frame )
+			}
+			break;
 	}
 }
 
@@ -125,14 +156,22 @@ function next_frame ( timestamp ) {
 	if ( sh.x == food.x && sh.y == food.y ) {
 		snake = [snake[0]].concat ( snake )
 		populate_food ()
+		score = parseInt ( score + 1 )
 	}
-	move_snake ()
+	var found = move_snake ()
 	draw_snake ()
 	draw_food ()
-	window.requestAnimationFrame ( next_frame )
+	draw_score ()
+	if ( found != Boolean ( true ) ) {
+		window.requestAnimationFrame ( next_frame )
+	} else {
+		can_reset = new Boolean ( true )
+	}
 }
 
 function loaded_function () {
+	score = parseInt ( 0 )
+	can_reset = new Boolean ( false )
 	snake_dir = new vec2 ( 0, 1 )
 	cell_size = new vec2 ( 32, 32 )
 	canvas = document.getElementById ( "myCanvas" )
