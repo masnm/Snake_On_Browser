@@ -1,0 +1,203 @@
+# Version: 22.04
+# Project: https://github.com/moonjellydigital/js-gitignore
+# License: MIT
+# Copyright (c) 2022 Camille Spain
+
+# Mac Desktop Services Store
+.DS_Store
+
+# Windows Thumbnails
+Thumbs.db
+
+# Runtime Data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs
+*.log
+
+# IDEs and Editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.swp
+.vscode/
+
+# .env Files
+.env
+.env.*
+
+# Archive Files
+*.tgz
+*.gz
+*.zip
+
+## Dependency Directories ##
+
+# Node
+node_modules/
+
+# JSPM
+jspm_packages/
+
+## Node ##
+
+# REPL History
+.node_repl_history
+
+# Compiled Binary Add-ons
+build/Release
+
+## TypeScript ##
+
+# TypeScript Incremental Builds Cache
+*.tsbuildinfo
+
+## PACKAGE MANAGERS ##
+
+## npm ##
+
+# npm Cache Directory
+.npm
+
+# npm Logs
+npm-debug.log*
+
+## Yarn and Yarn v2 ##
+
+# Yarn Logs
+yarn-debug.log*
+yarn-error.log*
+
+# Yarn Integrity File
+.yarn-integrity
+
+# Yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+## eslint ##
+
+# eslint Cache
+.eslintcache
+
+## FRAMEWORKS AND CMS ##
+
+## Next.js ##
+
+# Next.js Build
+.next
+out
+
+## Nuxt.js ##
+
+# Nuxt.js Build
+.nuxt
+dist
+
+## Docusaurus ##
+
+# Docusaurus Build and Cache
+.docusaurus
+
+## Gatsby ##
+
+# Gatsby Build Cache
+.cache/
+
+# Gatsby Build Output
+# Uncomment 'public' directory if not using Next.js
+# public
+
+## VuePress ##
+
+# VuePress Build
+.vuepress/dist
+
+# VuePress v2 Temp and Cache Directories
+.temp
+.cache
+
+## Serverless Framework ##
+
+# Serverless Build
+.serverless/
+
+## DATA STORES ##
+
+## DynamoDB ##
+
+# DynamoDB Local
+.dynamodb/
+
+## BUNDLERS ##
+
+## Snowpack ##
+
+# Snowpack Dependency Directory
+web_modules/
+
+## Microbundle ##
+
+# Microbundle Cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+## Parcel ##
+
+# Parcel Cache
+.cache
+.parcel-cache
+
+## FuseBox ##
+
+# FuseBox Cache
+.fusebox/
+
+## TASK RUNNERS ##
+
+## Grunt ##
+
+# Grunt Intermediate Storage
+.grunt
+
+## TESTING ##
+
+## Istanbul ##
+
+# Istanbul Coverage
+coverage
+*.lcov
+
+# Istanbul nyc CLI
+.nyc_output
+
+## VS Code ##
+
+# VS Code Versions for Extension Testing
+.vscode-test
+
+## CSS TOOLS ##
+
+## Sass ##
+
+# Sass Cache
+.sass-cache
+
+# vim swap files
+*.swp
+
+# ctags generated tag files
+tags
